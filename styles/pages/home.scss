@@ -1,0 +1,128 @@
+@use "../variables/colors" as *;
+@use "../variables/media" as *;
+@use "../variables/font" as *;
+@use "../helpers/mixins" as *;
+
+body {
+  height: 100vh;
+  background-color: $main_bg;
+  color: $soft_blue;
+}
+
+main {
+  height: calc(100% - 76px);
+  @include media("s-mobile") {
+    height: auto;
+  }
+  @include center();
+  @include media("s-mobile") {
+    padding: 15px;
+  }
+  section {
+    article {
+      figure {
+        max-width: 350px;
+        overflow: hidden;
+        padding: 25px;
+        background-color: $card_bg;
+        border-radius: 15px;
+        box-shadow: 0 30px 50px $regular_shadow;
+        > div[role="img"] {
+          width: 300px;
+          height: 300px;
+          overflow: hidden;
+          border-radius: 10px;
+          margin-bottom: 25px;
+          position: relative;
+          cursor: pointer;
+          img {
+            width: 100%;
+            height: auto;
+          }
+          &:hover::after {
+            position: absolute;
+            content: "";
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background: $cyan_5 url("../images/icon-view.svg") no-repeat 50%;
+          }
+        }
+        figcaption {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          h1 {
+            color: $white;
+            font-size: $font_size + 6;
+            cursor: pointer;
+            &:hover {
+              color: $cyan;
+            }
+          }
+          p {
+            font: {
+              size: $font_size;
+              weight: 300;
+            }
+            line-height: 1.5;
+          }
+          .details {
+            display: flex;
+            justify-content: space-between;
+            p,
+            span {
+              @include align-center;
+              gap: 7px;
+              font: {
+                size: $font_size - 2;
+                weight: 500;
+              }
+            }
+            p {
+              color: $cyan;
+            }
+            border-bottom: 1px solid $line_color;
+            padding-bottom: 20px;
+          }
+          .credits {
+            @include align-center;
+            gap: 20px;
+            div[role="img"] {
+              max-width: 35px;
+              max-height: 35px;
+              overflow: hidden;
+              border-radius: 50%;
+              border: 1px solid $white;
+              img {
+                width: 100%;
+              }
+            }
+            p {
+              font-size: $font_size - 2;
+              span {
+                color: $white;
+                cursor: pointer;
+                &:hover {
+                  color: $cyan;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+footer {
+  font-size: 14px;
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+  font-weight: 500;
+}
+footer a {
+  color: $cyan;
+}
